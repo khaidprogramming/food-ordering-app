@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
-const ItemList = ({ itemData }) => {
+const ItemList = ({ itemData,count }) => {
   // console.log(CDN_URL);
   // console.log(itemData);
   const { name, imageId, description } = itemData.card.info;
@@ -33,6 +33,7 @@ const ItemList = ({ itemData }) => {
         </button>
 
         <img src={CDN_URL + imageId} className=" rounded-lg  " />
+        {count && <p>{count}</p>}
         <img />
       </div>
     </div>

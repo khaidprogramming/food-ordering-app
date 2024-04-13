@@ -8,16 +8,18 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
 
   const resInfo = useRestaurantMenu(resId);
+  console.log(resInfo);
+  
 
   if (resInfo.length <= 0) {
     return <div>shimmer ui</div>;
   }
 
   const { name, cuisines, costForTwo } =
-    resInfo?.data?.cards[0]?.card?.card?.info;
+    resInfo?.data?.cards[2]?.card?.card?.info;
 
   const filteredItemCategory =
-    resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

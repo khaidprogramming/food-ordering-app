@@ -5,8 +5,27 @@ import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
   const cartItem = useSelector((store) => store.cart.items);
-  console.log(cartItem);
+  // console.log(cartItem);
   const dispatch = useDispatch();
+
+ 
+
+  
+  
+  const result = cartItem.reduce((acc, card) => {
+    const existingCard = acc.find(item => item.id === card?.id);
+    if (existingCard) {
+      existingCard.count++;
+    } else {
+      acc.push({ id: card?.id, count: 1, data: card });
+    }
+    return acc;
+  }, []);
+
+  console.log(result);
+  
+  // console.log(result);
+  
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -22,8 +41,8 @@ const Cart = () => {
       </button>
 
       {cartItem &&
-        cartItem.map((cart) => (
-          <ItemList key={cart?.card?.info?.id} itemData={cart} />
+        result.map((item) => (
+          <ItemList key={item?.id} itemData={item?.data} count={item.count} />
         ))}
     </div>
   );

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export const Header = () => {
   const [currentValue, setcurrentValue] = useState("Log in");
   const onlineStatus = useOnlineStatus();
-  const userData = useContext(UserContext);
+  // const userData = useContext(UserContext);
 
   const cartItem = useSelector((store) => store.cart.items);
 
@@ -46,7 +46,7 @@ export const Header = () => {
               {currentValue}
             </button>
           </li>
-          <li>{userData.userName}</li>
+          {/* <li>{userData.userName}</li> */}
         </ul>
       </div>
     </div>
